@@ -3,7 +3,7 @@
 
 
 def hex_dump(src, length=16, encoding="utf8"):
-    hex_Bin_dump(bytes(src, encoding=encoding), length)
+    return hex_Bin_dump(bytes(src, encoding=encoding), length)
     # result = []
     # codeWidth = 2
     #
