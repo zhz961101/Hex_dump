@@ -1,12 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-from .hexdump import *
+from .hexdump import hex_dump, hex_Bin_dump
+
+__Author__ = "Sanshi_zhzer"
+__Version__ = "0.1.3b"
+
+Benner = "\t<author> : {author}\n\t<version> : {version}".format(
+    author=__Author__, version=__Version__)
 
 
 def print_usage(err=None):
+    global Benner
+
     print("\n\t---Hexdump HELP DOC---")
-    print()
+    print("\tBenner:")
+    print(Benner)
     print("\t Usage:")
     print("\t -t or -text <string or blank>  : \n\t\tyou can call hexdump with you printing")
     print(
@@ -71,7 +80,7 @@ def main():
             try:
                 with open(filename, 'rb') as f:
                     printHex(f.read(), int(start), int(end))
-            except (FileNotFoundError, IndexError) as e:
+            except BaseException as e:
                 print_usage(e)
         elif cmdn in ["-h", "-help"]:
             print_usage()
